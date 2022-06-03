@@ -1,103 +1,195 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import { useState } from 'react'
-import Jumbotron from '../components/Jumbotron'
-import TrendingPublication from '../components/TrendingPublication'
-import styles from '../styles/Home.module.css'
-import {IoTrendingUpOutline} from 'react-icons/io5'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import { useState } from "react";
+import Jumbotron from "../components/Jumbotron";
+import TrendingPublication from "../components/TrendingPublication";
+import styles from "../styles/Home.module.css";
+import { IoTrendingUpOutline } from "react-icons/io5";
+import {BiUserCheck} from 'react-icons/bi'
+import CreatorCard from "../components/CreatorCard";
 
 const mockTrendingPubs = [
+    {
+        position: "01",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+    {
+        position: "02",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+    {
+        position: "03",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+    {
+        position: "04",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+    {
+        position: "05",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+    {
+        position: "06",
+        imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
+        author: "Daniel Akinusotu",
+        publicationTitle: "What am I doing with my life? A story of my life",
+        publishedDate: "May 27 2022",
+    },
+];
+
+const mockPopularCreator = [
   {
-    position: "01",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   },
   {
-    position: "02",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   },
   {
-    position: "03",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   },
   {
-    position: "04",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   },
   {
-    position: "05",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   },
   {
-    position: "06",
-    imgUrl: "https://miro.medium.com/max/700/0*yo339bv8Lu4q6-ef",
-    author: "Daniel Akinusotu",
-    publicationTitle: "What am I doing with my life? A story of my life",
-    publishedDate: "May 27 2022"
+    name: "sir_adek",
+    handle: "bravocc032816.lens",
+    address: "0xdb46d1dc155634fbc732f92e853b10b288ad5a1d",
+    bio: "Software Engineer",
+    followersCount: 0,
+    followingsCount: 0,
+    picture: ""
   }
 ]
 
 const Home: NextPage = () => {
+    const [trendingPublications, setTrendingPublications] =
+        useState(mockTrendingPubs);
+      const [popularCreators, setPopularCreators] = useState(mockPopularCreator)
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>Web3 Medium</title>
+                <meta
+                    name="description"
+                    content="Generated by create next app"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
 
-  const [trendingPublications, setTrendingPublications] = useState(mockTrendingPubs)
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Web3 Medium</title>
-        <meta name="description" content="Generated by create next app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+            <header className="bg-theme-blue p-4 border-b border-black">
+                <div className="container mx-auto flex justify-between item-bottom">
+                    <Link href="/">
+                        <div className="text-white text-5xl font-blaka">
+                            Web3
+                            <span className="text-2xl text-theme-brown">
+                                Medium
+                            </span>
+                        </div>
+                    </Link>
 
-      <header className='bg-theme-blue p-4 border-b border-black'>
-        <div className='container mx-auto flex justify-between item-bottom'>
-          <Link href = "/">
-            <div className='text-white text-5xl font-blaka'>Web3<span className='text-2xl text-theme-brown'>Medium</span></div>
-          </Link>
-          
-          <nav className='flex justify-end items-center'>
-            <Link href = "/write" >
-              <a className='hidden sm:block mr-5 text-white'>write</a>
-            </Link>
-            <Link href = "/write" >
-              <a className='hidden sm:block mr-5 text-white'>signin</a>
-            </Link>
-            <button className='bg-white px-4 py-2 rounded-2xl text-theme-brown-dark'>Get Started</button>
-          </nav>
+                    <nav className="flex justify-end items-center">
+                        <Link href="/write">
+                            <a className="hidden sm:block mr-5 text-white">
+                                write
+                            </a>
+                        </Link>
+                        <Link href="/write">
+                            <a className="hidden sm:block mr-5 text-white">
+                                signin
+                            </a>
+                        </Link>
+                        <button className="bg-white px-4 py-2 rounded-2xl text-theme-brown-dark">
+                            Get Started
+                        </button>
+                    </nav>
+                </div>
+            </header>
+
+            <main className={styles.main}>
+                <Jumbotron />
+
+                <section className="container mx-auto px-4 md:px-0 py-20 border-b border-theme-blue">
+                    <h2 className="text-2xl mb-8 font-semibold flex gap-4 items-center">
+                        <span>Trending Publications</span>
+                        <IoTrendingUpOutline className="" />
+                    </h2>
+                    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                        {trendingPublications &&
+                            trendingPublications.map((publication, index) => (
+                                <TrendingPublication {...publication} key = {index} />
+                            ))}
+                    </div>
+                </section>
+
+                <section className="container mx-auto px-4 md:px-0 py-20">
+                  <h2 className="text-2xl mb-8 font-semibold flex gap-4 items-center">
+                        <span>Popular Creators</span>
+                        <BiUserCheck className="" />
+                    </h2>
+                    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                        {popularCreators &&
+                            popularCreators.map((creatorDetails, index) => (
+                                <CreatorCard {...creatorDetails} index = {index + 1} key = {index} />
+                            ))}
+                    </div>
+                </section>
+            </main>
+
+            <footer className="bg-gray-50 text-center py-10">
+              <p className="text-xl font-light">&copy; web3medium built for Encode X Polygon Hack 2022</p>
+            </footer>
         </div>
-      </header>
-      <Jumbotron />
+    );
+};
 
-      <section className='container mx-auto px-4 md:px-0 py-12'>
-        <h2 className='flex text-2xl mb-8 font-semibold'> <IoTrendingUpOutline className = 'mr-4' />Trending Publications</h2>
-        <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-          {trendingPublications && trendingPublications.map((publication, index) => <TrendingPublication {...publication} />)}
-        </div>
-      </section>
-
-      <main className={styles.main}>
-        
-      </main>
-
-      <footer className={styles.footer}>
-        
-      </footer>
-    </div>
-  )
-}
-
-export default Home
+export default Home;
