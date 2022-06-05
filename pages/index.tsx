@@ -186,7 +186,7 @@ const Home: NextPage = () => {
             </main>
 
             <footer className="bg-gray-50 text-center py-10">
-              <p className="text-xl font-light">&copy; web3medium built for Encode X Polygon Hack 2022</p>
+              <p className="text-sm font-light">&copy; web3medium built for Encode X Polygon Hack 2022</p>
             </footer>
         </div>
     );
